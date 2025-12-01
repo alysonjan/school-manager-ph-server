@@ -90,6 +90,14 @@ class AuthenticationController extends Controller
     //     ], 200);
     // }
 
+    public function check(Request $request)
+    {
+        return response()->json([
+            'success' => true,
+            'status' => 'backend is running',
+        ], 200);
+    }
+
     public function login(Request $request)
     {
         $request->validate([
