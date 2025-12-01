@@ -185,6 +185,35 @@ class AuthenticationController extends Controller
         ], 200);
     }
 
+    public function updateFirstUser(Request $request)
+    {
+        $request->validate([
+            'username' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
+
+        $user = User::on('users_main')->where('username', $request->username)->first();
+
+
+
+        if (!$user) {
+            return response()->json([
+                'message' => 'User not found.',
+            ], 404);
+        }
+
+        $hashedPassword = Hash::make($request->password);
+
+        $user->email = $request->email;
+        $user->password = $hashedPassword;
+        $user->save();
+
+        return response()->json([
+            'message' => 'Profile updated successfully.',
+        ], 200);
+    }
+
     // ------------------- Reusable Functions -------------------
 
     private function createMessage($userId, $fullName, $subject, $message)

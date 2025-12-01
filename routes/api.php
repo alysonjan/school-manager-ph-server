@@ -18,6 +18,9 @@ use App\Http\Controllers\api\messages\MessagesController;
 
 // Public routes
 Route::post('/login', [AuthenticationController::class, 'login']);
+Route::post('/update-first-user', [AuthenticationController::class, 'updateFirstUser']);
+
+
 
 // Protected routes (require authentication)
 Route::middleware('auth:sanctum')->group(function () {
