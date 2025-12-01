@@ -17,7 +17,7 @@ use App\Http\Controllers\api\messages\MessagesController;
 */
 
 //index
-Route::post('/check', [AuthenticationController::class, 'check']);
+Route::get('/check', [AuthenticationController::class, 'check']);
 
 // Public routes
 Route::post('/login', [AuthenticationController::class, 'login']);
