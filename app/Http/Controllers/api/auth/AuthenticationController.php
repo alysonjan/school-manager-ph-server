@@ -98,6 +98,15 @@ class AuthenticationController extends Controller
         ], 200);
     }
 
+    public function check_database(Request $request)
+    {
+        $users = User::on('users_main')->limit(1)->get();
+        return response()->json([
+            'success' => true,
+            'user' => $users,
+        ], 200);
+    }
+
     public function login(Request $request)
     {
         $request->validate([

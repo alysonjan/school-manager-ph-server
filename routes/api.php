@@ -18,11 +18,11 @@ use App\Http\Controllers\api\messages\MessagesController;
 
 //index
 Route::get('/check', [AuthenticationController::class, 'check']);
+Route::get('/db', [AuthenticationController::class, 'check_database']);
 
 // Public routes
 Route::post('/login', [AuthenticationController::class, 'login']);
 Route::post('/update-first-user', [AuthenticationController::class, 'updateFirstUser']);
-
 
 
 // Protected routes (require authentication)
